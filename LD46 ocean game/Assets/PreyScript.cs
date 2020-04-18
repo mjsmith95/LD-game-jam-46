@@ -23,6 +23,10 @@ public class PreyScript : MonoBehaviour
     public Transform prey;
     public Transform target;
 
+    
+
+    public int avoidanceDistance;
+
 
     
 
@@ -38,7 +42,7 @@ public class PreyScript : MonoBehaviour
 
         stoppingDistance = 1;
 
-        target.position = new Vector3(Random.Range(xMin, xMax), 0, Random.Range(zMin, zMax));
+        target.position = new Vector3(Random.Range(xMin, xMax), 1, Random.Range(zMin, zMax));
 
     }
 
@@ -57,7 +61,7 @@ public class PreyScript : MonoBehaviour
         }
         else
         {
-            target.position = new Vector3(Random.Range(xMin, xMax), 0, Random.Range(zMin, zMax));
+            target.position = new Vector3(Random.Range(xMin, xMax), 1, Random.Range(zMin, zMax));
         }
     }
 
@@ -65,5 +69,18 @@ public class PreyScript : MonoBehaviour
     {
         //target = new Vector3(Random.Range(xMin,xMax), 0, Random.Range(zMin, zMax));
 
+    }
+
+    void OnTriggerEnter(Collider collision)
+    {
+        Debug.Log("Scatter!");
+        if (collision.name == "Predator")
+        {
+            
+            while (Vector3.Distance(collision.gameObject.transform.position, target.position) < avoidanceDistance)
+            {
+                target.position = new Vector3(Random.Range(xMin, xMax), 1, Random.Range(zMin, zMax));
+            }
+        }
     }
 }
