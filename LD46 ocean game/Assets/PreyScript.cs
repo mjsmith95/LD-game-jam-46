@@ -17,14 +17,14 @@ public class PreyScript : MonoBehaviour
     //move and turn speed stats
     public float moveSpeed;
     public float turnSpeed;
+    public float stoppingDistance;
 
     //current target and position
     public Transform prey;
     public Transform target;
 
 
-    //random to be used
-    public Random rand;
+    
 
 
     // Start is called before the first frame update
@@ -36,6 +36,8 @@ public class PreyScript : MonoBehaviour
         zMin = -10;
         zMax = 10;
 
+        stoppingDistance = 1;
+
         target.position = new Vector3(Random.Range(xMin, xMax), 0, Random.Range(zMin, zMax));
 
     }
@@ -43,25 +45,20 @@ public class PreyScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        //prey.Rotate(new Vector3(0, turnSpeed*Time.deltaTime, 0));
 
-        // Determine which direction to rotate towards
-        Vector3 targetDirection = target.position - prey.position;
+        
+        //points towards target
+        prey.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(target.position - prey.position), turnSpeed * Time.deltaTime);
 
-        // The step size is equal to speed times frame time.
-        float singleStep = turnSpeed * Time.deltaTime;
-
-        // Rotate the forward vector towards the target direction by one step
-        Vector3 newDirection = Vector3.RotateTowards(prey.forward, targetDirection, singleStep, 0.0f);
-
-        // Draw a ray pointing at our target in
-        Debug.DrawRay(prey.position, newDirection, Color.red);
-
-        // Calculate a rotation a step closer to the target and applies rotation to this object
-        prey.rotation = Quaternion.LookRotation(newDirection);
-
-
-        prey.position += prey.forward * Time.deltaTime * moveSpeed;
+        //stops within distance
+        if (Vector3.Distance(prey.position, target.position) > stoppingDistance) { 
+            prey.position += prey.forward * Time.deltaTime * moveSpeed;
+            
+        }
+        else
+        {
+            target.position = new Vector3(Random.Range(xMin, xMax), 0, Random.Range(zMin, zMax));
+        }
     }
 
     void RandomTarget()
