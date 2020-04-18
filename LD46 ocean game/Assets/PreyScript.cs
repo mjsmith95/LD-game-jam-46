@@ -13,6 +13,10 @@ public class PreyScript : MonoBehaviour
     public int xMax;
     public int xMin;
 
+    //vertical range ymin max
+    public int yMin;
+    public int yMax;
+
 
     //move and turn speed stats
     public float moveSpeed;
@@ -26,6 +30,16 @@ public class PreyScript : MonoBehaviour
     
 
     public int avoidanceDistance;
+
+    public double timeColliding;
+
+    public int maxTimeEscape;
+
+    public bool isPredator;
+
+    public bool hunting;
+
+    public Object huntingTarget;
 
 
     
@@ -42,7 +56,7 @@ public class PreyScript : MonoBehaviour
 
         stoppingDistance = 1;
 
-        target.position = new Vector3(Random.Range(xMin, xMax), 1, Random.Range(zMin, zMax));
+        RandomTarget();
 
     }
 
@@ -61,26 +75,50 @@ public class PreyScript : MonoBehaviour
         }
         else
         {
-            target.position = new Vector3(Random.Range(xMin, xMax), 1, Random.Range(zMin, zMax));
+            if (hunting)
+            {
+                Destroy(huntingTarget);
+                hunting = false;
+            }
+            RandomTarget();
         }
     }
 
     void RandomTarget()
     {
-        //target = new Vector3(Random.Range(xMin,xMax), 0, Random.Range(zMin, zMax));
+        target.position = new Vector3(Random.Range(xMin, xMax), Random.Range(yMin, yMax), Random.Range(zMin, zMax));
 
     }
 
     void OnTriggerEnter(Collider collision)
     {
-        Debug.Log("Scatter!");
-        if (collision.name == "Predator")
+        if (!isPredator)
         {
-            
+            target.position = new Vector3(Random.Range(xMin, xMax), 1, Random.Range(zMin, zMax));
+            timeColliding = 0;
             while (Vector3.Distance(collision.gameObject.transform.position, target.position) < avoidanceDistance)
             {
-                target.position = new Vector3(Random.Range(xMin, xMax), 1, Random.Range(zMin, zMax));
+                RandomTarget();
             }
         }
+        else
+        {
+            if (!hunting)
+            {
+                hunting = true;
+                target = collision.gameObject.transform;
+                huntingTarget = collision.gameObject;
+                Debug.Log("i am hunting");
+            }
+        }
+        
     }
+
+    private void OnCollisionEnter(Collision col)
+    {
+        
+    }
+
+ 
+
 }

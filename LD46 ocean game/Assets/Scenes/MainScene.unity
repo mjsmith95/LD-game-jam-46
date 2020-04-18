@@ -202,13 +202,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 793589124}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 20, z: 0}
+  m_LocalRotation: {x: 0.2645451, y: -0, z: -0, w: 0.96437335}
+  m_LocalPosition: {x: 0, y: 6.01, z: -12.31}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 30.680002, y: 0, z: 0}
 --- !u!4 &942715179 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 75fb2fd3d41e35b4a846d6153d8ebf6a,
@@ -303,7 +303,7 @@ Transform:
   m_GameObject: {fileID: 1238871364}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 1, z: 2}
+  m_LocalScale: {x: 10, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -339,6 +339,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   predator: {fileID: 3465906418976038799}
   prey: {fileID: 3830508350587883565}
+  numPredators: 0
+  numPrey: 0
 --- !u!4 &1327863585
 Transform:
   m_ObjectHideFlags: 0
@@ -455,6 +457,7 @@ GameObject:
   - component: {fileID: 3465906417810351041}
   - component: {fileID: 3465906417810351042}
   - component: {fileID: 3465906417810351043}
+  - component: {fileID: 3465906417810351044}
   m_Layer: 0
   m_Name: Fish
   m_TagString: Untagged
@@ -470,7 +473,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3465906417810351040}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 410117823}
@@ -493,12 +496,19 @@ MonoBehaviour:
   zMin: -10
   xMax: 10
   xMin: -10
-  moveSpeed: 5
+  yMin: 1
+  yMax: 4
+  moveSpeed: 2
   turnSpeed: 150
-  stoppingDistance: 0
+  stoppingDistance: 1
   prey: {fileID: 3465906417810351041}
   target: {fileID: 3465906418067624881}
   avoidanceDistance: 0
+  timeColliding: 0
+  maxTimeEscape: 0
+  isPredator: 1
+  hunting: 0
+  huntingTarget: {fileID: 0}
 --- !u!136 &3465906417810351043
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -513,6 +523,22 @@ CapsuleCollider:
   m_Height: 0.25
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &3465906417810351044
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3465906417810351040}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &3465906418067624880
 GameObject:
   m_ObjectHideFlags: 0
@@ -625,8 +651,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3465906418976038799}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.53, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1.53, y: 1, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 3465906418067624881}
   - {fileID: 3465906417810351041}
@@ -731,7 +757,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3830508350587883565}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3830508351277153146}
@@ -767,16 +793,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22059b12aac36134da53133d8daba3f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zMax: 10
-  zMin: -10
-  xMax: 10
-  xMin: -10
+  zMax: 100
+  zMin: -100
+  xMax: 100
+  xMin: -100
+  yMin: 2
+  yMax: 10
   moveSpeed: 5
-  turnSpeed: 150
-  stoppingDistance: 0
+  turnSpeed: 250
+  stoppingDistance: 1
   prey: {fileID: 3830508351041847169}
   target: {fileID: 3830508351277153146}
-  avoidanceDistance: 0
+  avoidanceDistance: 4
+  timeColliding: 0
+  maxTimeEscape: 3
+  isPredator: 0
+  hunting: 0
+  huntingTarget: {fileID: 0}
 --- !u!4 &3830508351041847169
 Transform:
   m_ObjectHideFlags: 0
@@ -803,6 +836,7 @@ GameObject:
   - component: {fileID: 3830508351041847169}
   - component: {fileID: 3830508351041847168}
   - component: {fileID: 3830508351041847171}
+  - component: {fileID: 3830508351041847173}
   m_Layer: 0
   m_Name: Fish
   m_TagString: Untagged
@@ -820,10 +854,26 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 2
+  m_Radius: 3
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &3830508351041847173
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3830508351041847170}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!4 &3830508351277153146
 Transform:
   m_ObjectHideFlags: 0
