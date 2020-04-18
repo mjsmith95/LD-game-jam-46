@@ -96,6 +96,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -167,10 +168,11 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: df82b8d5fd0a07349a319b4fc7f8f466, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -238,8 +240,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1096396938}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 1
+  m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
   m_Range: 10
@@ -381,13 +384,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1350129521}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 19.27, z: 0}
+  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
+  m_LocalPosition: {x: 0, y: 11.11, z: -15.43}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!114 &1350129525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,7 +405,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waterLevel: 15
   normalColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5019608}
-  underWaterColor: {r: 0.16104485, g: 0.2751435, b: 0.7264151, a: 0.5019608}
+  underWaterColor: {r: 0.16078432, g: 0.7254902, b: 0.6522887, a: 0.36862746}
+  fDensity: 0.09
 --- !u!1 &1481701201
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,6 +439,8 @@ MonoBehaviour:
   predator: {fileID: 1497492622779057812, guid: a692a48b0b8c7d948a6fd3a077c8f2c4,
     type: 3}
   prey: {fileID: 5843635835544723236, guid: b0d903e10fdda8543bdac24cbf5f8c65, type: 3}
+  numPredators: 2
+  numPrey: 30
 --- !u!4 &1481701203
 Transform:
   m_ObjectHideFlags: 0
