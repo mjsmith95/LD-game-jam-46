@@ -3180,6 +3180,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1327863585}
   - component: {fileID: 1327863584}
+  - component: {fileID: 1327863586}
   m_Layer: 0
   m_Name: Environment Controller
   m_TagString: Untagged
@@ -3211,6 +3212,8 @@ MonoBehaviour:
   huntedPreyIndex: 0
   targetPredator: {fileID: 0}
   targetPrey: {fileID: 0}
+  simulation: {fileID: 0}
+  testy: 0a00000032000000
 --- !u!4 &1327863585
 Transform:
   m_ObjectHideFlags: 0
@@ -3225,6 +3228,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1327863586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1327863583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da941e35ff5ca149afd464429e50365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preyBR: 0.4
+  predPreyIt: 0.01
+  predPreyConv: 0.8
+  predDR: 0.6
+  predPreyPop: 0a00000032000000
+  targetPredPreyPop: 
+  epoch: 20000
+  step: 0.001
+  timeRaito: 0
+  preyDeathRatio: 0
+  predDeathRatio: 0
 --- !u!1 &1330096306
 GameObject:
   m_ObjectHideFlags: 0

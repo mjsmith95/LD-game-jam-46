@@ -8,6 +8,7 @@ public class FaunaSpawna : MonoBehaviour
     public GameObject prey;
     public GameObject prey2;
 
+    // list vals to use with simulator script 
     public int numPredators;
     public int numPrey;
 
@@ -21,7 +22,10 @@ public class FaunaSpawna : MonoBehaviour
 
     public GameObject targetPredator;
     public GameObject targetPrey;
-    
+    // simulatation script 
+    public Simulator simulation;
+    public int[] testy;
+
 
 
     // Start is called before the first frame update
@@ -30,6 +34,9 @@ public class FaunaSpawna : MonoBehaviour
         preyList = new List<GameObject>();
         predatorList = new List<GameObject>();
         hunting = false;
+         // need to fix tomorrow 
+        //simulation.simulate(testy);
+        //set up time
     }
 
     // Update is called once per frame
@@ -56,6 +63,7 @@ public class FaunaSpawna : MonoBehaviour
         }
 
     }
+
     void spawnPredator()
     {
         if (predatorList.Count == 0)
@@ -110,5 +118,7 @@ public class FaunaSpawna : MonoBehaviour
         targetPredator = predatorList[huntingPredatorIndex];
         targetPrey = predatorList[huntedPreyIndex];
         hunting = true;
-    }
+    } 
+
+
 }

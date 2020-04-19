@@ -11,7 +11,6 @@ public class Simulator : MonoBehaviour
     predPreyConv = rate for conversion from prey to pred 
     predDR = pred death rate 
     */
-
     // these prams can be changed / accessed py player and scripted events 
 
     public double preyBR;
@@ -24,8 +23,16 @@ public class Simulator : MonoBehaviour
     public int[] targetPredPreyPop;
 
     // these parms are for the integration step, timing and changing in populations 
-    public double epoch;
+    public int epoch;
     public double step;
+    public double timeRaito;
+    public double preyDeathRatio;
+    public double predDeathRatio;
+
+    public List<List<double>> timeLine;
+    public List<double> prey;
+    public List<double> pred;
+
     // calc 2 time baby 
     private double[] PredPreyDiffEq(double[] ppPop, double pBr, double ppIt, double conversionRate, double pDR)
     {
@@ -38,12 +45,15 @@ public class Simulator : MonoBehaviour
         return changeInPredPrey;
     }
 
-    public double[] IntegratationStep(int steps,double[] currentPop, double deltaTime)
+    public List<List<double>> IntegratationStep(int steps,double[] currentPop, double deltaTime)
     {
         //get current pred and prey pops 
+        Debug.Log("number of steps" + steps);
         double[] predPreyPop = currentPop;
-
-
+        List<List<double>> popTimeline = new List<List<double>>();
+        List<double> predPopTimeline = new List<double>(steps);
+        List<double> preyPopTimeline = new List<double>(steps);
+        Debug.Log("this list size is " + preyPopTimeline.Count);
         //loop through the range of integration 
         for (int t = 0; t < steps; t++)
         {
@@ -51,16 +61,44 @@ public class Simulator : MonoBehaviour
             // if change in time is zero dont change the population 
             if (t == 0)
             {
-                predPreyPop = predPreyPop;
+                preyPopTimeline[t] = predPreyPop[0];
+                predPopTimeline[t] = predPreyPop[1];
             }
             //otherwise the current population in time equla the last + diffeq * deltaT 
             else
             {
-                predPreyPop[0] = predPreyPop[0] + PredPreyDiffEq(predPreyPop, preyBR, predPreyIt, predPreyConv,predDR)[0] * deltaTime;
-                predPreyPop[1] = predPreyPop[1] + PredPreyDiffEq(predPreyPop, preyBR, predPreyIt, predPreyConv, predDR)[1] * deltaTime;
+                double[] prevPops = { preyPopTimeline[t - 1], predPopTimeline[t - 1] };
+                double[] dpdt = PredPreyDiffEq(prevPops, preyBR, predPreyIt, predPreyConv, predDR);
+
+                preyPopTimeline[t] = preyPopTimeline[t-1] + dpdt[0] * deltaTime;
+                predPopTimeline[t] = predPopTimeline[t - 1] + dpdt[1] * deltaTime;
             }
         }
-        return predPreyPop;
+        return popTimeline;
+    }
+
+    public void Simulate(int[] popVector)
+    {
+        // get the current populations and cast to prep for integration 
+        double[] currentPop = new double[2];
+        currentPop[0] = (double)popVector[0];
+        currentPop[1] = (double)popVector[1];
+
+       timeLine = IntegratationStep(epoch, currentPop, step);
+        // round to int bc population only has whole vals 
+        targetPredPreyPop[0] = (int)timeLine[0][epoch];
+        targetPredPreyPop[1] = (int)timeLine[1][epoch];
+        Debug.Log("The current prey population is: " + popVector[0]);
+        Debug.Log("The current pred population is: " + popVector[1]);
+        Debug.Log("********************************");
+        Debug.Log("The tragert prey population is: " + targetPredPreyPop[0]);
+        Debug.Log("The targert pred population is: " + targetPredPreyPop[1]);
+        Debug.Log("********************************");
+        Debug.Log("The epoch was: " + epoch);
+        Debug.Log("The epoch to time ratio is 20000 to 20 or 1000 steps to one second");
+        Debug.Log("The population exchange rate is 1 in game animal to 10 simulated");
+        Debug.Log("********************************");
+
     }
     /* epochs last 2 min  
      * 2 min 
@@ -76,5 +114,11 @@ public class Simulator : MonoBehaviour
      */
     //on start run a simulation for 5 min  
 
+    void Start()
+    {
 
+        // need to fix tomorrow 
+        Simulate(predPreyPop);
+        //set up time
+    }
 }

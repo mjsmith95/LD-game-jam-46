@@ -24,13 +24,13 @@ def dxydt(xy, b, h, e, d):
     dy = e * h * x * y - d * y
     return np.array([dx, dy])
 
-b = 1
-h = 0.005
+b = 0.4
+h = 0.01
 e = 0.8
 d = 0.6
-steps = 100000
+steps = 20000
 xy = np.zeros((2, steps))
-xy[:,0] = 20, 100
+xy[:,0] = 10, 50
 dt = 0.001
 
 for t_ in range(1, steps):
