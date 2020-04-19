@@ -12,6 +12,7 @@ public class MapDisplay : MonoBehaviour
 
         Texture2D texture = new Texture2D(width, height); //, TextureFormat.RGB24, false);
         Color[] cMap = new Color[width * height];
+
         for (int y=0; y < height; y++)
         {
             for(int x = 0; x < height; x++)
