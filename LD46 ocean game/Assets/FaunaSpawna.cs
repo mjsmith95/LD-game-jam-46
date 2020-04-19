@@ -6,6 +6,7 @@ public class FaunaSpawna : MonoBehaviour
 {
     public GameObject predator;
     public GameObject prey;
+    public GameObject prey2;
 
     public int numPredators;
     public int numPrey;
@@ -20,6 +21,7 @@ public class FaunaSpawna : MonoBehaviour
 
     public GameObject targetPredator;
     public GameObject targetPrey;
+    
 
 
     // Start is called before the first frame update
@@ -75,7 +77,13 @@ public class FaunaSpawna : MonoBehaviour
         }
         else
         {
-            preyList.Add(Instantiate<GameObject>(prey));
+            if (Random.Range(0,5) < 3) {
+                preyList.Add(Instantiate<GameObject>(prey));
+            }
+            else
+            {
+                preyList.Add(Instantiate<GameObject>(prey2));
+            }
         }
     }
 
