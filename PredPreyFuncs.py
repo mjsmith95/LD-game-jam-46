@@ -28,7 +28,6 @@ b = 1
 h = 0.005
 e = 0.8
 d = 0.6
-
 steps = 100000
 xy = np.zeros((2, steps))
 xy[:,0] = 20, 100
@@ -47,5 +46,7 @@ plt.xlabel('Time')
 plt.ylabel('Count')
 plt.legend();
 
-
- 
+p = 1
+for t in range(0,10):
+    print("curr p val " + str(p))
+    p = p + 1 
