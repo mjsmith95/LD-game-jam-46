@@ -37,9 +37,9 @@ public class PreyScript : MonoBehaviour
 
     public bool isPredator;
 
-    public bool hunting;
+    public FaunaSpawna spawner;
 
-    public Object huntingTarget;
+
 
 
     
@@ -61,26 +61,41 @@ public class PreyScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
 
-        
-        //points towards target
-        prey.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(target.position - prey.position), turnSpeed * Time.deltaTime);
+        if (!spawner.hunting || !isPredator)
+        {
+            //points towards target
+            prey.rotation = Quaternion.RotateTowards(prey.rotation, Quaternion.LookRotation(target.position - prey.position), turnSpeed * Time.deltaTime);
 
-        //stops within distance
-        if (Vector3.Distance(prey.position, target.position) > stoppingDistance) { 
-            prey.position += prey.forward * Time.deltaTime * moveSpeed;
-            
+            //stops within distance
+            if (Vector3.Distance(prey.position, target.position) > stoppingDistance)
+            {
+                prey.position += prey.forward * Time.deltaTime * moveSpeed;
+
+            }
+            else
+            {
+                RandomTarget();
+            }
         }
         else
         {
-            if (hunting)
+            Debug.Log("here");
+            if(spawner.targetPredator.Equals(gameObject))
             {
-                Destroy(huntingTarget);
-                hunting = false;
+                target = spawner.targetPrey.transform;
             }
-            RandomTarget();
+            if (Vector3.Distance(prey.position, target.position) > stoppingDistance)
+            {
+                prey.position += prey.forward * Time.deltaTime * moveSpeed;
+
+            }
+            else
+            {
+                RandomTarget();
+            }
         }
     }
 
@@ -96,28 +111,23 @@ public class PreyScript : MonoBehaviour
         {
             target.position = new Vector3(Random.Range(xMin, xMax), 1, Random.Range(zMin, zMax));
             timeColliding = 0;
+            RandomTarget();
             while (Vector3.Distance(collision.gameObject.transform.position, target.position) < avoidanceDistance)
             {
                 RandomTarget();
             }
         }
-        else
-        {
-            if (!hunting)
-            {
-                hunting = true;
-                target = collision.gameObject.transform;
-                huntingTarget = collision.gameObject;
-                Debug.Log("i am hunting");
-            }
-        }
         
     }
 
-    private void OnCollisionEnter(Collision col)
+    public void setHuntingTarget(Transform t)
     {
-        
+        target = t;
     }
+
+
+
+
 
  
 
