@@ -12,7 +12,9 @@ public class MapGen : MonoBehaviour
     //call the map func from Noise.cs 
     public void GenerateMap()
     {
-        float[,] noiseMAp = Noise.CreateNoiseMap(mWidth, mHeight, nScale);
+        float[,] noiseMap = Noise.CreateNoiseMap(mWidth, mHeight, nScale);
+        MapDisplay display = FindObjectOfType<MapDisplay>();
+        display.DrawMap(noiseMap);  
     }
 
 }
