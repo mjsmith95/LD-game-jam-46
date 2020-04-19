@@ -25,7 +25,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _CausticsTex:
         m_Texture: {fileID: 2800000, guid: 1f9becf3ac0041644a1e7a072b8fd86b, type: 3}
+<<<<<<< HEAD
+        m_Scale: {x: 1, y: 1}
+=======
         m_Scale: {x: 100, y: 100}
+>>>>>>> 9c5efeb60002a49b23222372ef5f3940e8915381
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
         m_Texture: {fileID: 0}
@@ -77,10 +81,15 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
+<<<<<<< HEAD
+    - _Caustics1Speed: {r: 0.009, g: 0.05, b: 0, a: 0}
+    - _Caustics1_ST: {r: 2, g: 1, b: 0, a: 0}
+=======
     - _Caustics1Speed: {r: 0.003, g: 0.05, b: 0, a: 0}
     - _Caustics1_ST: {r: 5, g: 5, b: 0, a: 0}
+>>>>>>> 9c5efeb60002a49b23222372ef5f3940e8915381
     - _Caustics2Speed: {r: 0.004, g: 0.003, b: 0, a: 0}
-    - _Caustics2_ST: {r: 2, g: 1, b: 0, a: 0}
+    - _Caustics2_ST: {r: 2, g: 3, b: 0, a: 0}
     - _CausticsSpeed: {r: 0.01, g: 0.01, b: 0, a: 0}
     - _Caustics_ST: {r: 1, g: 1, b: 0, a: 0}
     - _Caustics_Speed: {r: 1, g: 1, b: 0, a: 0}
