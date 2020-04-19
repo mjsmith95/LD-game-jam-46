@@ -29,7 +29,6 @@ public class Simulator : MonoBehaviour
     public double preyDeathRatio;
     public double predDeathRatio;
 
-    public List<List<double>> timeLine;
     public List<double> prey;
     public List<double> pred;
 
@@ -84,7 +83,7 @@ public class Simulator : MonoBehaviour
         currentPop[0] = (double)popVector[0];
         currentPop[1] = (double)popVector[1];
 
-       timeLine = IntegratationStep(epoch, currentPop, step);
+        IntegratationStep(epoch, currentPop, step);
         // round to int bc population only has whole vals 
         targetPredPreyPop[0] = (int)timeLine[0][epoch];
         targetPredPreyPop[1] = (int)timeLine[1][epoch];
