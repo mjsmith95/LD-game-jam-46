@@ -29,8 +29,8 @@ public class Simulator : MonoBehaviour
     public double preyDeathRatio;
     public double predDeathRatio;
 
-    public List<double> prey;
-    public List<double> pred;
+    public List<double> preyTimeline;
+    public List<double> predTimeline;
 
     // calc 2 time baby 
     private double[] PredPreyDiffEq(double[] ppPop, double pBr, double ppIt, double conversionRate, double pDR)
@@ -85,8 +85,8 @@ public class Simulator : MonoBehaviour
 
         IntegratationStep(epoch, currentPop, step);
         // round to int bc population only has whole vals 
-        targetPredPreyPop[0] = (int)timeLine[0][epoch];
-        targetPredPreyPop[1] = (int)timeLine[1][epoch];
+        targetPredPreyPop[0] = (int)preyTimeline[epoch];
+        targetPredPreyPop[1] = (int)predTimeline[epoch];
         Debug.Log("The current prey population is: " + popVector[0]);
         Debug.Log("The current pred population is: " + popVector[1]);
         Debug.Log("********************************");

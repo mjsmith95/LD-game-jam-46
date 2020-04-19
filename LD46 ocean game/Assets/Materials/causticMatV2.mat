@@ -7,11 +7,11 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CausticsMat
+  m_Name: causticMatV2
   m_Shader: {fileID: 4800000, guid: f49a46fd023918443a717947ea62346b, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 1
+  m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -25,11 +25,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _CausticsTex:
         m_Texture: {fileID: 2800000, guid: 1f9becf3ac0041644a1e7a072b8fd86b, type: 3}
-<<<<<<< HEAD
         m_Scale: {x: 1, y: 1}
-=======
-        m_Scale: {x: 100, y: 100}
->>>>>>> 9c5efeb60002a49b23222372ef5f3940e8915381
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
         m_Texture: {fileID: 0}
@@ -48,9 +44,9 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 10305, guid: 0000000000000000f000000000000000, type: 0}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 1, y: 0}
+        m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -71,7 +67,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Metallic: 0.5
+    - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
@@ -81,17 +77,9 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-<<<<<<< HEAD
-    - _Caustics1Speed: {r: 0.009, g: 0.05, b: 0, a: 0}
-    - _Caustics1_ST: {r: 2, g: 1, b: 0, a: 0}
-=======
-    - _Caustics1Speed: {r: 0.003, g: 0.05, b: 0, a: 0}
-    - _Caustics1_ST: {r: 5, g: 5, b: 0, a: 0}
->>>>>>> 9c5efeb60002a49b23222372ef5f3940e8915381
-    - _Caustics2Speed: {r: 0.004, g: 0.003, b: 0, a: 0}
-    - _Caustics2_ST: {r: 2, g: 3, b: 0, a: 0}
-    - _CausticsSpeed: {r: 0.01, g: 0.01, b: 0, a: 0}
-    - _Caustics_ST: {r: 1, g: 1, b: 0, a: 0}
-    - _Caustics_Speed: {r: 1, g: 1, b: 0, a: 0}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Caustics1Speed: {r: 0.009, g: 0.001, b: 0, a: 0}
+    - _Caustics1_ST: {r: 2, g: 2, b: 0, a: 0}
+    - _Caustics2Speed: {r: 0.001, g: 0.001, b: 0, a: 0}
+    - _Caustics2_ST: {r: 2, g: 1, b: 0, a: 0}
+    - _Color: {r: 0.26415092, g: 0.26415092, b: 0.21804911, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

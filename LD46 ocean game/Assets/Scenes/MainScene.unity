@@ -2713,8 +2713,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waterLevel: 16
   normalColor: {r: 0, g: 0, b: 0, a: 0}
-  underWaterColor: {r: 0, g: 0.02951169, b: 1, a: 0.2}
-  fDensity: 0.04
+  underWaterColor: {r: 0.17150229, g: 0.8867924, b: 0.7924139, a: 0.4392157}
+  fDensity: 0.027
 --- !u!1 &810568053
 GameObject:
   m_ObjectHideFlags: 0
@@ -4198,7 +4198,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: df82b8d5fd0a07349a319b4fc7f8f466, type: 2}
+  - {fileID: 2100000, guid: a04512676827d8846b7c280e5a9cf8ca, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4384,6 +4384,8 @@ MonoBehaviour:
   timeRaito: 0
   preyDeathRatio: 0
   predDeathRatio: 0
+  preyTimeline: []
+  predTimeline: []
 --- !u!1 &1330096306
 GameObject:
   m_ObjectHideFlags: 0

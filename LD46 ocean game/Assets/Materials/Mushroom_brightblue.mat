@@ -77,8 +77,8 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Caustics1Speed: {r: 0.005, g: 0.11, b: 0, a: 0}
-    - _Caustics1_ST: {r: 1, g: 1, b: 0, a: 0}
+    - _Caustics1Speed: {r: 0.009, g: 0.11, b: 0, a: 0}
+    - _Caustics1_ST: {r: 2, g: 2, b: 0, a: 0}
     - _Caustics2Speed: {r: 0.004, g: 0.003, b: 0, a: 0}
     - _Caustics2_ST: {r: 2, g: 1, b: 0, a: 0}
     - _Color: {r: 0, g: 0.9534545, b: 1, a: 1}
