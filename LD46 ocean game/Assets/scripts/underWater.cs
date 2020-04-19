@@ -8,6 +8,7 @@ public class underWater : MonoBehaviour
     private bool isUnderWater;
     public Color normalColor;
     public Color underWaterColor;
+    public float fDensity;
 
    //normalColor = new Color(0.5f,0.5f,0.5f,0.5f);
     //underWaterColor = new Color(0.22f, 0.65f, 0.70f, 0.5f);
@@ -51,7 +52,7 @@ public class underWater : MonoBehaviour
     {
         RenderSettings.fogColor = underWaterColor;
         // Set the fog color to be blue
-        RenderSettings.fogDensity = 0.09f;
+        RenderSettings.fogDensity = fDensity;
 
         // And enable fog
         RenderSettings.fog = true;
