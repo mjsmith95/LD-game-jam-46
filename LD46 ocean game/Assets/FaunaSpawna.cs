@@ -22,21 +22,28 @@ public class FaunaSpawna : MonoBehaviour
 
     public GameObject targetPredator;
     public GameObject targetPrey;
-    // simulatation script 
+    // simulatation vals
     public Simulator simulation;
-    public int[] testy;
+    public float totalTime; // how much in game time we want for a simulation run 
+    private int sampleRatio; // the rate at which we sample the population timeline
+    private float currentTime; // current in game time, ALWAYS ADD f AT THE END OF A FLOAT VAL
+    private int currentWholeSecond;
+    private int prevWholeSecond; 
 
-
-
+    //set up sim
+    private void Awake()
+    {
+        currentWholeSecond = 0;
+        prevWholeSecond = 0;
+        currentTime = 0f;
+        sampleRatio = Mathf.FloorToInt(((float)simulation.epoch) / totalTime);    
+    }
     // Start is called before the first frame update
     void Start()
     {
         preyList = new List<GameObject>();
         predatorList = new List<GameObject>();
         hunting = false;
-         // need to fix tomorrow 
-        //simulation.simulate(testy);
-        //set up time
     }
 
     // Update is called once per frame
@@ -61,6 +68,15 @@ public class FaunaSpawna : MonoBehaviour
         {
             huntPredator();
         }
+        // simulation and timer code 
+        currentTime += Time.deltaTime;
+        currentWholeSecond = Mathf.FloorToInt(currentTime) % ((int)totalTime);
+        if (prevWholeSecond != currentWholeSecond)
+        {
+            UpdatePredPreyPopulation(currentWholeSecond);
+            //Debug.Log("Is the timner working: " + currentWholeSecond); 
+        }
+        prevWholeSecond = currentWholeSecond; 
 
     }
 
@@ -118,7 +134,13 @@ public class FaunaSpawna : MonoBehaviour
         targetPredator = predatorList[huntingPredatorIndex];
         targetPrey = predatorList[huntedPreyIndex];
         hunting = true;
-    } 
+    }
+
+    void UpdatePredPreyPopulation(int currentTime)
+    {
+        int val = Mathf.FloorToInt((float)simulation.preyTimeline[sampleRatio * currentWholeSecond]);
+        Debug.Log("current prey pop at time " + currentTime + " is " + val);
+    }
 
 
 }

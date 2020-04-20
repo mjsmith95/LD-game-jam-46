@@ -27,14 +27,14 @@ def dxydt(xy, b, h, e, d):
 b = 0.4
 h = 0.01
 e = 0.8
-d = 0.6
+d = 0.5
 steps = 20000
 xy = np.zeros((2, steps))
 xy[:,0] = 10, 50
 dt = 0.001
 
-for t_ in range(1, steps):
-    xy[:,t_] = xy[:, t_-1] + dxydt( xy[:, t_-1], b, h, e, d) * dt
+for t in range(1, steps):
+    xy[:,t] = xy[:, t-1] + dxydt( xy[:, t-1], b, h, e, d) * dt
 x = xy[0, :]
 y = xy[1, :]
 
@@ -49,4 +49,4 @@ plt.legend();
 p = 1
 for t in range(0,10):
     print("curr p val " + str(p))
-    p = p + 1 
+    p = p + 1  
