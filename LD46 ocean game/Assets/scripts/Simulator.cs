@@ -104,6 +104,15 @@ public class Simulator : MonoBehaviour
         predPreyConv = newCRate;
         Simulate(predPreyPop);
     }
+
+    public void resetToDefault()
+    {
+        preyBR = 0.4;
+        predDR = 0.6;
+        predPreyIt = 0.01;
+        predPreyConv = 0.8;
+        Simulate(predPreyPop);
+    }
     /* epochs last 5 min   
      * assume some number of steps in simulation is equal to some amount of in game time 
      * assume 1 in game fish is eqaul to 10 - 100 simulated fish (pred and prey still need to figure out best scale) 

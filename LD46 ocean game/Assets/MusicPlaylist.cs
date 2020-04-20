@@ -4,46 +4,50 @@ using UnityEngine;
 
 public class MusicPlaylist : MonoBehaviour
 {
-    public bool shuffle;
-    public List<AudioClip> MusicList;
-    public AudioSource source;
-    public int index;
+    public AudioClip[] clips;
+    private AudioSource audiosource;
+    public bool randomPlay = false;
+    private int currentClipIndex = 0;
 
-    void start()
+    void Start()
     {
-        if (shuffle)
-        {
-            source.clip = MusicList[(int)Random.Range(0,MusicList.Capacity)];
-        }
-        else
-        {
-            source.clip = MusicList[0];
-        }
-        source.Play();
-
-        
+        audiosource = FindObjectOfType<AudioSource>();
+        audiosource.loop = false;
     }
 
-    void update()
+    void Update()
     {
-        if (!source.isPlaying)
+        if (!audiosource.isPlaying)
         {
-            if (!shuffle)
+            AudioClip nextClip;
+            if (randomPlay)
             {
-                index++;
-                if (index == MusicList.Capacity)
-                {
-                    index = 0;
-                }
+                nextClip = GetRandomClip();
             }
             else
             {
-                index = Random.Range(0, MusicList.Capacity);
+                nextClip = GetNextClip();
             }
-
-            source.clip = MusicList[index];
-            source.Play();
+            currentClipIndex++;
+            if (currentClipIndex == clips.Length) currentClipIndex = 0;
+            audiosource.clip = nextClip;
+            audiosource.Play();
         }
+    }
+
+    private AudioClip GetRandomClip()
+    {
+        return clips[Random.Range(0, clips.Length)];
+    }
+
+    private AudioClip GetNextClip()
+    {
+        return clips[(currentClipIndex + 1) % clips.Length];
+    }
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(transform.gameObject);
     }
 }
 

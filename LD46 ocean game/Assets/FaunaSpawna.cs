@@ -36,7 +36,7 @@ public class FaunaSpawna : MonoBehaviour
     public float totalTime; // how much in game time we want for a simulation run 
     private int sampleRatio; // the rate at which we sample the population timeline
     private float currentTime; // current in game time, ALWAYS ADD f AT THE END OF A FLOAT VAL
-    private int currentWholeSecond;
+    public int currentWholeSecond;
     private int prevWholeSecond; 
 
     //set up sim
