@@ -415,6 +415,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: interactionRateSlider
       objectReference: {fileID: 0}
+    - target: {fileID: 6148478419464894566, guid: 014f48249518d474fa9dd3ad76b26973,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1327863586}
+    - target: {fileID: 6148478419464894566, guid: 014f48249518d474fa9dd3ad76b26973,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChanngePredPreyInteractRate
+      objectReference: {fileID: 0}
     - target: {fileID: 6148478419464894567, guid: 014f48249518d474fa9dd3ad76b26973,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6500,6 +6510,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4424482724044544964, guid: 62619b2f9c66f834abc4fe8e6f0330ad,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1327863586}
+    - target: {fileID: 4424482724044544964, guid: 62619b2f9c66f834abc4fe8e6f0330ad,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChanngePredPreyConversionRate
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62619b2f9c66f834abc4fe8e6f0330ad, type: 3}
 --- !u!224 &1227769710 stripped
@@ -6849,6 +6869,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876178268052421622, guid: fff37fb89fef9964c863af7ad5b264f4,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1327863586}
+    - target: {fileID: 4876178268052421622, guid: fff37fb89fef9964c863af7ad5b264f4,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChanngePredDeathRate
       objectReference: {fileID: 0}
     - target: {fileID: 4876178268835899567, guid: fff37fb89fef9964c863af7ad5b264f4,
         type: 3}
@@ -8068,6 +8098,31 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5858910009424040416, guid: c6c92f8105ad0d5429fb4a53a8b29e06,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5858910009424040416, guid: c6c92f8105ad0d5429fb4a53a8b29e06,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5858910010108582849, guid: c6c92f8105ad0d5429fb4a53a8b29e06,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1327863586}
+    - target: {fileID: 5858910010108582849, guid: c6c92f8105ad0d5429fb4a53a8b29e06,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChanngePreyBirthRate
+      objectReference: {fileID: 0}
+    - target: {fileID: 5858910010108582849, guid: c6c92f8105ad0d5429fb4a53a8b29e06,
+        type: 3}
+      propertyPath: m_Value
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5858910010108582850, guid: c6c92f8105ad0d5429fb4a53a8b29e06,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8181,6 +8236,11 @@ PrefabInstance:
     - target: {fileID: 5858910010845112226, guid: c6c92f8105ad0d5429fb4a53a8b29e06,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5858910010845112226, guid: c6c92f8105ad0d5429fb4a53a8b29e06,
+        type: 3}
+      propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
