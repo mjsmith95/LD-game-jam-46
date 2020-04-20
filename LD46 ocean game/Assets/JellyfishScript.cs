@@ -23,7 +23,7 @@ public class JellyfishScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        bringMeToLife.transform.localScale += new Vector3(expandSensitivity * Modifier, expandSensitivity * Modifier, expandSensitivity * Modifier);
+        bringMeToLife.transform.localScale += new Vector3(expandSensitivity * Modifier, 0, expandSensitivity * Modifier );
         frame++;
         toModifySpeed.moveSpeed = baseSpeed + (expandSensitivity * Modifier * expandSpeedModifier);
         if (frame == numFramesPerAction)

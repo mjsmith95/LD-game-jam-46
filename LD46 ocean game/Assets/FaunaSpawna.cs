@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class FaunaSpawna : MonoBehaviour
 {
-    public GameObject predator;
-    public GameObject prey;
+    public GameObject predator1;
+    public GameObject predator2;
+    public GameObject predator3;
+
+    public GameObject prey1;
     public GameObject prey2;
+    public GameObject prey3;
+    public GameObject prey4;
+    public GameObject prey5;
 
     // list vals to use with simulator script 
     public int numPredators;
@@ -84,12 +90,24 @@ public class FaunaSpawna : MonoBehaviour
     {
         if (predatorList.Count == 0)
         {
-            predatorList.Add(Instantiate<GameObject>(predator, new Vector3(0, 0, 0), new Quaternion()));
+            predatorList.Add(Instantiate<GameObject>(predator1, new Vector3(0, 0, 0), new Quaternion()));
         }
         else
         {
-            predatorList.Add(Instantiate<GameObject>(predator));
-            
+            int randomFish = Random.Range(0, 100);
+            if (randomFish < 30)
+            {
+                predatorList.Add(Instantiate<GameObject>(predator1));
+            }
+            else if (randomFish < 60)
+            {
+                predatorList.Add(Instantiate<GameObject>(predator2));
+            }
+            else
+            {
+                predatorList.Add(Instantiate<GameObject>(predator3));
+            }
+
         }
     }
 
@@ -97,16 +115,29 @@ public class FaunaSpawna : MonoBehaviour
     {
         if (preyList.Count == 0)
         {
-            preyList.Add(Instantiate<GameObject>(prey, new Vector3(0, 0, 0), new Quaternion()));
+            preyList.Add(Instantiate<GameObject>(prey1, new Vector3(0, 0, -10), new Quaternion()));
         }
         else
         {
-            if (Random.Range(0,5) < 3) {
-                preyList.Add(Instantiate<GameObject>(prey));
+            int randomFish = Random.Range(0, 100);
+            if (randomFish < 20) {
+                preyList.Add(Instantiate<GameObject>(prey1));
+            }
+            else if(randomFish < 40)
+            {
+                preyList.Add(Instantiate<GameObject>(prey2));
+            }
+            else if (randomFish < 60)
+            {
+                preyList.Add(Instantiate<GameObject>(prey3));
+            }
+            else if (randomFish < 80)
+            {
+                preyList.Add(Instantiate<GameObject>(prey4));
             }
             else
             {
-                preyList.Add(Instantiate<GameObject>(prey2));
+                preyList.Add(Instantiate<GameObject>(prey5));
             }
         }
     }

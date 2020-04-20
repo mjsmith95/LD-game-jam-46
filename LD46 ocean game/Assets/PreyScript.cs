@@ -42,6 +42,7 @@ public class PreyScript : MonoBehaviour
 
 
 
+
     
 
 
@@ -57,6 +58,8 @@ public class PreyScript : MonoBehaviour
         stoppingDistance = 1;
 
         RandomTarget();
+
+        
 
     }
 
