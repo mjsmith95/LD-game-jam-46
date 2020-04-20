@@ -99,7 +99,7 @@ public class FaunaSpawna : MonoBehaviour
     {
         if (preyList.Count == 0)
         {
-            preyList.Add(Instantiate<GameObject>(prey1, new Vector3(0, 0, 0), new Quaternion()));
+            preyList.Add(Instantiate<GameObject>(prey1, new Vector3(0, 0, -10), new Quaternion()));
         }
         else
         {
