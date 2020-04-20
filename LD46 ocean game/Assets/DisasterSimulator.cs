@@ -10,7 +10,7 @@ public class DisasterSimulator : MonoBehaviour
     {
         for (int i = 0; i < coralMaterial.Capacity; i++)
         {
-            coralMaterial[i].color = new Vector4(1, 1, 1,1);
+           // coralMaterial[i].color = new Vector4(1, 1, 1,1);
         }
     }
 
