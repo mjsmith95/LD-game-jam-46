@@ -16,7 +16,7 @@ public class FaunaSpawna : MonoBehaviour
 
     // list vals to use with simulator script 
     public int numPredators;
-    public int numPrey;
+    public int numPrey; 
 
     public List<GameObject> preyList;
     public List<GameObject> predatorList;
@@ -169,8 +169,11 @@ public class FaunaSpawna : MonoBehaviour
 
     void UpdatePredPreyPopulation(int currentTime)
     {
-        int val = Mathf.FloorToInt((float)simulation.preyTimeline[sampleRatio * currentWholeSecond]);
-        Debug.Log("current prey pop at time " + currentTime + " is " + val);
+        int newPreyVal = Mathf.FloorToInt((float)simulation.preyTimeline[sampleRatio * currentWholeSecond]);
+        int newPredVal = Mathf.FloorToInt((float)simulation.predTimeline[sampleRatio * currentWholeSecond]);
+        numPredators = newPredVal;
+        numPrey = newPreyVal;
+        //Debug.Log("current prey pop at time " + currentTime + " is " + newPreyVal); 
     }
 
 

@@ -6686,8 +6686,8 @@ MonoBehaviour:
   huntedPreyIndex: 0
   targetPredator: {fileID: 0}
   targetPrey: {fileID: 0}
-  simulation: {fileID: 0}
-  testy: 0a00000032000000
+  simulation: {fileID: 1327863586}
+  totalTime: 300
 --- !u!4 &1327863585
 Transform:
   m_ObjectHideFlags: 0
