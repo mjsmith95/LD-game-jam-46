@@ -173,6 +173,8 @@ public class FaunaSpawna : MonoBehaviour
         int newPredVal = Mathf.FloorToInt((float)simulation.predTimeline[sampleRatio * currentWholeSecond]);
         numPredators = newPredVal;
         numPrey = newPreyVal;
+        simulation.predPreyPop[0] = newPreyVal;
+        simulation.predPreyPop[1] = newPredVal;
         //Debug.Log("current prey pop at time " + currentTime + " is " + newPreyVal); 
     }
 

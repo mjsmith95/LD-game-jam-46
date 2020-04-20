@@ -19,16 +19,9 @@ public class Simulator : MonoBehaviour
     public double predDR;
     //store the current population
     public int[] predPreyPop;
-    // store the simulated population 
-    public int[] targetPredPreyPop;
-
     // these parms are for the integration step, timing and changing in populations 
     public int epoch;
     public double step;
-    public double timeRaito;
-    public double preyDeathRatio;
-    public double predDeathRatio;
-
     public double[] preyTimeline;
     public double[] predTimeline;
 
@@ -47,9 +40,9 @@ public class Simulator : MonoBehaviour
     private void IntegratationStep(int steps,double[] currentPop, double deltaTime)
     {
         //get current pred and prey pops 
-        Debug.Log("number of steps " + steps);
+        //Debug.Log("number of steps " + steps);
         double[] predPreyPop = currentPop;
-        Debug.Log("this list size is " + preyTimeline.Count());
+        //Debug.Log("this list size is " + preyTimeline.Count());
         //loop through the range of integration 
         for (int t = 0; t < steps; t++)
         {
@@ -81,19 +74,38 @@ public class Simulator : MonoBehaviour
         Debug.Log("********************************");
         Debug.Log("current prey pop is: " + currentPop[0]);
         Debug.Log("current pred pop is: " + currentPop[1]);
-        Debug.Log("testy pop" + predTimeline[1]);
+        //Debug.Log("testy pop" + predTimeline[1]);
         IntegratationStep(epoch, currentPop, step);
-        Debug.Log("The current prey population is: " + popVector[0]);
-        Debug.Log("The current pred population is: " + popVector[1]);
+        //Debug.Log("The current prey population is: " + popVector[0]);
+        //Debug.Log("The current pred population is: " + popVector[1]);
         //Debug.Log("The tragert prey population is: " + targetPredPreyPop[0]);
         //Debug.Log("The targert pred population is: " + targetPredPreyPop[1]);
-        Debug.Log("The epoch was: " + epoch);
-        Debug.Log("The epoch to time ratio is 20000 to 20 or 1000 steps to one second");
-        Debug.Log("The population exchange rate is 1 in game animal to 10 simulated");
+        //Debug.Log("The epoch was: " + epoch);
+        //Debug.Log("The epoch to time ratio is 20000 to 20 or 1000 steps to one second");
+        //Debug.Log("The population exchange rate is 1 in game animal to 10 simulated");
     }
-    /* epochs last 2 min  
-     * 2 min 
-     * assume some number of steps in simu  lation is equal to some amount of in game time 
+    public void ChanngePreyBirthRate(float newBRate)
+    {
+        preyBR = newBRate;
+        Simulate(predPreyPop);
+    }
+    public void ChanngePredDeathRate(float newDRate)
+    {
+        predDR = newDRate;
+        Simulate(predPreyPop);
+    }
+    public void ChanngePredPreyInteractRate(float newIRate)
+    {
+        predPreyIt = newIRate;
+        Simulate(predPreyPop);
+    }
+    public void ChanngePredPreyConversionRate(float newCRate)
+    {
+        predPreyConv = newCRate;
+        Simulate(predPreyPop);
+    }
+    /* epochs last 5 min   
+     * assume some number of steps in simulation is equal to some amount of in game time 
      * assume 1 in game fish is eqaul to 10 - 100 simulated fish (pred and prey still need to figure out best scale) 
      * on simulation 
      * - integration happens 
@@ -102,7 +114,7 @@ public class Simulator : MonoBehaviour
      * on event 
      * - player induced or otherwise 
      * - run on simulation 
-     */ 
+     */
     //on start run a simulation for 5 min  
     void Awake()
     {

@@ -30,7 +30,7 @@ e = 0.8
 d = 0.5
 steps = 20000
 xy = np.zeros((2, steps))
-xy[:,0] = 10, 50
+xy[:,0] = 50, 10
 dt = 0.001
 
 for t in range(1, steps):
