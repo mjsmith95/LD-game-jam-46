@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class FaunaSpawna : MonoBehaviour
 {
+    public WindowGraph preyGraph;
+    public WindowGraph predatorGraph;
+
     public GameObject predator1;
     public GameObject predator2;
     public GameObject predator3;
@@ -175,6 +178,8 @@ public class FaunaSpawna : MonoBehaviour
         numPrey = newPreyVal;
         simulation.predPreyPop[0] = newPreyVal;
         simulation.predPreyPop[1] = newPredVal;
+        preyGraph.addData(numPrey);
+        predatorGraph.addData(numPredators);
         //Debug.Log("current prey pop at time " + currentTime + " is " + newPreyVal); 
     }
 
