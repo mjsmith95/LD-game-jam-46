@@ -71,9 +71,9 @@ public class Simulator : MonoBehaviour
         double[] currentPop = new double[2];
         currentPop[0] = (double)popVector[0];
         currentPop[1] = (double)popVector[1];
-        Debug.Log("********************************");
-        Debug.Log("current prey pop is: " + currentPop[0]);
-        Debug.Log("current pred pop is: " + currentPop[1]);
+        //Debug.Log("********************************");
+        //Debug.Log("current prey pop is: " + currentPop[0]);
+        //Debug.Log("current pred pop is: " + currentPop[1]);
         //Debug.Log("testy pop" + predTimeline[1]);
         IntegratationStep(epoch, currentPop, step);
         //Debug.Log("The current prey population is: " + popVector[0]);
@@ -120,7 +120,7 @@ public class Simulator : MonoBehaviour
     {
         preyTimeline = new double[epoch];
         predTimeline = new double[epoch];
-        Debug.Log("current array size please for the love of god work so I can find all the shit worng in my code: " + predTimeline.Count());
+        //Debug.Log("current array size please for the love of god work so I can find all the shit worng in my code: " + predTimeline.Count());
     }
     void Start()
     {
