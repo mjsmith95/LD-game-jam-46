@@ -5,6 +5,7 @@ using TMPro;
 
 public class DisasterSimulator : MonoBehaviour
 {
+    public GameObject restartButton;
     public TextMeshProUGUI ticker;
     public Simulator simulator;
     public FaunaSpawna faunaSpawna;
@@ -13,8 +14,11 @@ public class DisasterSimulator : MonoBehaviour
     public int secBetweenDisasterChance;
 
     public bool disasterFreeMode;
-    
-    
+
+    private void Awake()
+    {
+        restartButton.SetActive(false);
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -61,6 +65,7 @@ public class DisasterSimulator : MonoBehaviour
             simulator.predPreyPop[1] = 0;
             simulator.Simulate(simulator.predPreyPop);
             faunaSpawna.numPrey = 0;
+            BroadcastMessage("Restart");
         }
     }
 
@@ -92,5 +97,9 @@ public class DisasterSimulator : MonoBehaviour
         simulator.predPreyPop[0] =(int)((float)simulator.predPreyPop[0] * 0.8);
         simulator.predPreyPop[1] = (int)((float)simulator.predPreyPop[1] * 0.8);
         simulator.Simulate(simulator.predPreyPop);
+    }
+    void Restart()
+    {
+        restartButton.SetActive(true);
     }
 }
