@@ -161,7 +161,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 48.90001, y: 41.199997}
+  m_AnchoredPosition: {x: 48.899902, y: 41.19995}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &12101280
@@ -8275,7 +8275,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -49.90001, y: 49.199997}
+  m_AnchoredPosition: {x: -49.899902, y: 49.19995}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &1203015723 stripped
@@ -9623,8 +9623,8 @@ MonoBehaviour:
   prey3: {fileID: 1005473091}
   prey4: {fileID: 1353087827}
   prey5: {fileID: 5731666532000696032}
-  numPredators: 0
-  numPrey: 0
+  numPredators: 1
+  numPrey: 1
   preyList: []
   predatorList: []
   hunting: 0
