@@ -29,11 +29,11 @@ public class DisasterSimulator : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (faunaSpawna.numPredators != 0 || faunaSpawna.numPrey != 0) {
+        if (simulator.predPreyPop[0]!= 0 || simulator.predPreyPop[1] != 0) {
             if (prevWholeSecond + secBetweenDisasterChance == faunaSpawna.currentWholeSecond)
             {
                 int randomEvent = Random.Range(0, 10);
-                simulator.resetToDefault();
+                //simulator.resetToDefault();
                 if (randomEvent < 7 || disasterFreeMode)
                 {
                     Stable();
