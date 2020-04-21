@@ -9929,7 +9929,7 @@ MonoBehaviour:
   simulation: {fileID: 1327863586}
   totalTime: 300
   currentWholeSecond: 0
-  maxListSize: 1000
+  maxListSize: 600
 --- !u!4 &1327863585
 Transform:
   m_ObjectHideFlags: 0
