@@ -17,6 +17,8 @@ public class Simulator : MonoBehaviour
     public double predPreyIt;
     public double predPreyConv;
     public double predDR;
+    public int currentMaxPredPop;
+    public int currentMaxPreyPop; 
     //store the current population
     public int[] predPreyPop;
     // these parms are for the integration step, timing and changing in populations 
@@ -61,6 +63,14 @@ public class Simulator : MonoBehaviour
 
                 preyTimeline[t] = preyTimeline[t-1] + dpdt[0] * deltaTime;
                 predTimeline[t] = predTimeline[t - 1] + dpdt[1] * deltaTime;
+                if(preyTimeline[t] > currentMaxPreyPop)
+                {
+                    currentMaxPreyPop = Mathf.FloorToInt((float)preyTimeline[t]);
+                }
+                if(predTimeline[t] > currentMaxPredPop)
+                {
+                    currentMaxPredPop = Mathf.FloorToInt((float)predTimeline[t]);
+                }
             }
         }
     }
@@ -127,6 +137,8 @@ public class Simulator : MonoBehaviour
     //on start run a simulation for 5 min  
     void Awake()
     {
+        currentMaxPreyPop = 0;
+        currentMaxPredPop = 0;
         preyTimeline = new double[epoch];
         predTimeline = new double[epoch];
         //Debug.Log("current array size please for the love of god work so I can find all the shit worng in my code: " + predTimeline.Count());

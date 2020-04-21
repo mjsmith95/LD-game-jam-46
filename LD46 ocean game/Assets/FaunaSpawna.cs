@@ -37,8 +37,8 @@ public class FaunaSpawna : MonoBehaviour
     private int sampleRatio; // the rate at which we sample the population timeline
     private float currentTime; // current in game time, ALWAYS ADD f AT THE END OF A FLOAT VAL
     public int currentWholeSecond;
-    private int prevWholeSecond; 
-
+    private int prevWholeSecond;
+    public int maxListSize = 1000;
     //set up sim
     private void Awake()
     {
@@ -172,9 +172,9 @@ public class FaunaSpawna : MonoBehaviour
 
     void UpdatePredPreyPopulation(int currentTime)
     {
-        int newPreyVal = Mathf.FloorToInt((float)simulation.preyTimeline[sampleRatio * currentWholeSecond]);
-        int newPredVal = Mathf.FloorToInt((float)simulation.predTimeline[sampleRatio * currentWholeSecond]);
-        numPredators = newPredVal;
+        int newPreyVal = Mathf.FloorToInt((float)(maxListSize / simulation.currentMaxPreyPop) * (float)simulation.preyTimeline[sampleRatio * currentWholeSecond]); // equal to the max simulated pop / max possible pop 
+        int newPredVal = Mathf.FloorToInt((float)(maxListSize / simulation.currentMaxPredPop) * (float)simulation.predTimeline[sampleRatio * currentWholeSecond]);  
+        numPredators = newPredVal; 
         numPrey = newPreyVal;
         simulation.predPreyPop[0] = newPreyVal;
         simulation.predPreyPop[1] = newPredVal;
