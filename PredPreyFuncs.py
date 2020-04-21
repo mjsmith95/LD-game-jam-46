@@ -24,10 +24,10 @@ def dxydt(xy, b, h, e, d):
     dy = e * h * x * y - d * y
     return np.array([dx, dy])
 
-b = 0.4
-h = 0.01
+b = 0.1
+h = 0.06
 e = 0.8
-d = 0.5
+d = 1
 steps = 20000
 xy = np.zeros((2, steps))
 xy[:,0] = 50, 10
@@ -45,7 +45,7 @@ plt.plot(t, y, label='predator')
 plt.xlabel('Time')
 plt.ylabel('Count')
 plt.legend();
-
+plt.savefig("Unstablepred.png")
 p = 1
 for t in range(0,10):
     print("curr p val " + str(p))
