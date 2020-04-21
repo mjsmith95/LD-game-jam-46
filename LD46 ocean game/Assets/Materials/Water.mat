@@ -33,10 +33,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _DepthFactor: 1
-    - _DistortStrength: 0.3
-    - _ExtraHeight: 0
+    - _DistortStrength: 0.32
+    - _ExtraHeight: 1
     - _WaveAmp: 1
     - _WaveSpeed: 2
     m_Colors:
-    - _Color: {r: 0, g: 0.55607486, b: 0.98039216, a: 0.34117648}
+    - _Color: {r: 0.11980814, g: 0, b: 0.98039216, a: 0.34117648}
     - _EdgeColor: {r: 0, g: 0.90769243, b: 1, a: 1}
