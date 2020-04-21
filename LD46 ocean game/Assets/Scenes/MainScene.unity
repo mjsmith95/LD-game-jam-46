@@ -5675,9 +5675,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstUI: {fileID: 1195238419}
   secondUI: {fileID: 1048710860}
-  newPostion: {x: 13.74, y: 5.514928, z: -12.88122}
-  Speed: 2
-  rotationSpeed: 10
 --- !u!45 &793589132
 Skybox:
   m_ObjectHideFlags: 0

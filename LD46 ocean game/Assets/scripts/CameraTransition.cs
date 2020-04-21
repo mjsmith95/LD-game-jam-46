@@ -6,12 +6,9 @@ public class CameraTransition : MonoBehaviour
 {
     public GameObject firstUI;
     public GameObject secondUI;
-    public Vector3 newPostion;
-    public float Speed = 2.0f;
-    public float rotationSpeed = 10f;
     public void ChangePostion()
     {
-        transform.position = Vector3.Lerp(transform.position, newPostion, Speed);
+        transform.position = new Vector3(13.74f + -11.73999f, 5.514928f + 9.485072f, -12.88122f + 0.6612151f);
         ChangeRotation();
     }
     public void ChangeRotation()
