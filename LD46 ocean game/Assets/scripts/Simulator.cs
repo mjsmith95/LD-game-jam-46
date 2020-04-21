@@ -121,6 +121,8 @@ public class Simulator : MonoBehaviour
         predDR = 0.6;
         predPreyIt = 0.01;
         predPreyConv = 0.8;
+        predPreyPop[0] = 50;
+        predPreyPop[1] = 10;
         Simulate(predPreyPop);
     }
     /* epochs last 5 min   
