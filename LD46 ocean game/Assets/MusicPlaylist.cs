@@ -5,13 +5,13 @@ using UnityEngine;
 public class MusicPlaylist : MonoBehaviour
 {
     public AudioClip[] clips;
-    private AudioSource audiosource;
+    public AudioSource audiosource;
     public bool randomPlay = false;
     private int currentClipIndex = 0;
 
     void Start()
     {
-        audiosource = FindObjectOfType<AudioSource>();
+        //audiosource = FindObjectOfType<AudioSource>();
         audiosource.loop = false;
     }
 

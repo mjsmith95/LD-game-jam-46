@@ -11,6 +11,8 @@ public class DisasterSimulator : MonoBehaviour
 
     public int prevWholeSecond;
     public int secBetweenDisasterChance;
+
+    public bool disasterFreeMode;
     
     
     // Start is called before the first frame update
@@ -23,30 +25,42 @@ public class DisasterSimulator : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(prevWholeSecond + secBetweenDisasterChance == faunaSpawna.currentWholeSecond)
+        if (faunaSpawna.numPredators != 0 || faunaSpawna.numPrey != 0) {
+            if (prevWholeSecond + secBetweenDisasterChance == faunaSpawna.currentWholeSecond)
+            {
+                int randomEvent = Random.Range(0, 10);
+                simulator.resetToDefault();
+                if (randomEvent < 7 || disasterFreeMode)
+                {
+                    Stable();
+                }
+                else
+                {
+                    randomEvent = Random.Range(0, 3);
+                    if (randomEvent == 0)
+                    {
+                        Pollution();
+                    } else if (randomEvent == 1)
+                    {
+                        OverFishing();
+                    }
+                    else if (randomEvent == 2)
+                    {
+                        CoralBleaching();
+                    }
+                }
+                prevWholeSecond = faunaSpawna.currentWholeSecond;
+            }
+        }
+        else
         {
-            int randomEvent = Random.Range(0, 10);
-            simulator.resetToDefault();
-            if(randomEvent < 7)
-            {
-                Stable();
-            }
-            else
-            {
-                randomEvent = Random.Range(0, 3);
-                if(randomEvent == 0)
-                {
-                    Pollution();
-                }else if (randomEvent == 1)
-                {
-                    OverFishing();
-                }
-                else if (randomEvent == 2)
-                {
-                    CoralBleaching();
-                }
-            }
-            prevWholeSecond = faunaSpawna.currentWholeSecond;
+            changeTicker("Game Over: The ecosystem has crashed");
+            faunaSpawna.numPrey = 0;
+            faunaSpawna.numPredators = 0;
+            simulator.predPreyPop[0] = 0;
+            simulator.predPreyPop[1] = 0;
+            simulator.Simulate(simulator.predPreyPop);
+            faunaSpawna.numPrey = 0;
         }
     }
 
